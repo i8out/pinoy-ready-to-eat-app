@@ -25,5 +25,14 @@
     "address2": "Quezon City",
     "openingTime":"11:00AM",
     "closingTime": "8:00PM",
+    "image": ""},
+  {"iD": "4",
+    "storeName": "Chowtime",
+    "proprietor": "Donald Trump",
+    "mobileNo": "+63 917 818 1998",
+    "address1": "132 Rizal Street",
+    "address2": "Quezon City",
+    "openingTime":"11:00AM",
+    "closingTime": "8:00PM",
     "image": ""}
 ]}

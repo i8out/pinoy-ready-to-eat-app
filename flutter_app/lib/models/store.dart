@@ -9,20 +9,26 @@ class Store {
   String closingTime;
   String image;
 
-  Store(this.iD, this.storeName, this.proprietor, this.mobileNo, this.address1,
-      this.address2, this.openingTime, this.closingTime, this.image);
+  Store({
+      this.iD = '',
+      this.storeName = '',
+      this.proprietor = '',
+      this.mobileNo = '',
+      this.address1 = '',
+      this.address2 = '',
+      this.openingTime = '',
+      this.closingTime = '',
+      this.image = ''});
 
-  factory Store.fromJson(dynamic json) {
-    return Store(
-      json['iD'] as String,
-      json['storeName'] as String,
-      json['proprietor'] as String,
-      json['mobileNo'] as String,
-      json['address1'] as String,
-      json['address2'] as String,
-      json['openingTime'] as String,
-      json['closingTime'] as String,
-      json['image'] as String,
-    );
+  Store.fromJson(dynamic json) {
+    this.iD = json['iD'];
+    this.storeName = json['storeName'];
+    this.proprietor = json['proprietor'];
+    this.mobileNo = json['mobileNo'];
+    this.address1 = json['address1'];
+    this.address2 = json['address2'];
+    this.openingTime = json['openingTime'];
+    this.closingTime = json['closingTime'];
+    this.image = json['image'];
   }
 }

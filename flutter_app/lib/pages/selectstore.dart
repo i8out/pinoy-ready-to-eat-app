@@ -53,13 +53,29 @@ class _SelectStore extends State<SelectStore> {
                 ),
               );
             } else if (state is DisplayPage) {
-              return ListView.builder(
-                itemCount: _stores.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(_stores[index].storeName),
-                  );
-                },
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 4.0,
+                      mainAxisSpacing: 4.0),
+                  itemCount: _stores.length,
+                  itemBuilder: (context, index) => Card(
+                    color: Colors.green,
+                    child: InkWell(
+                      onTap: () {
+                        print(index);
+                      },
+                      child: Center(
+                        child: Text(
+                          _stores[index].storeName,
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               );
             }
           },
