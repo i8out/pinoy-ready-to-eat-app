@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/store.dart';
+import 'package:flutter_app/widgets/record_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
 
@@ -62,16 +63,23 @@ class _SelectStore extends State<SelectStore> {
                       mainAxisSpacing: 4.0),
                   itemCount: _stores.length,
                   itemBuilder: (context, index) => Card(
-                    color: Colors.green,
+                    color: Colors.yellow[100],
                     child: InkWell(
                       onTap: () {
-                        print(index);
+                        print(_stores[index].iD);
                       },
-                      child: Center(
-                        child: Text(
-                          _stores[index].storeName,
-                          style: Theme.of(context).textTheme.headline5,
-                        ),
+                      child: Column(
+                        children: <Widget>[
+                          RecordImage(_stores[index].image),
+                          Text(
+                            _stores[index].storeName,
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                          Text(
+                            _stores[index].address1,
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
+                        ],
                       ),
                     ),
                   ),
