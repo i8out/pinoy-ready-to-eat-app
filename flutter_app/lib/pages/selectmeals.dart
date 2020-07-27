@@ -46,7 +46,16 @@ class _SelectMeals extends State<SelectMeals> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Select Meals'),
+          title: Text('Meals'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+              onPressed: () {},
+            )
+          ],
         ),
         floatingActionButton: SpeedDial(
           animatedIcon: AnimatedIcons.menu_close,
@@ -104,6 +113,7 @@ class _SelectMeals extends State<SelectMeals> {
                             delegate: SliverChildBuilderDelegate(
                               (BuildContext context, int index) {
                                 return Card(
+                                  elevation: 3.0,
                                   color: mapColors(this._color),
                                   child: InkWell(
                                     onTap: () {
@@ -128,10 +138,10 @@ class _SelectMeals extends State<SelectMeals> {
                                           style: GoogleFonts.lato(
                                               textStyle: Theme.of(context)
                                                   .textTheme
-                                                  .headline5),
+                                                  .headline6),
                                         ),
                                         Text(
-                                          _meals[index].price,
+                                          'P' + _meals[index].price,
                                           style: GoogleFonts.lato(
                                               textStyle: Theme.of(context)
                                                   .textTheme

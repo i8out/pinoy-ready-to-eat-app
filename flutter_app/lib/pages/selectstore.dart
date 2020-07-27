@@ -59,6 +59,7 @@ class _SelectStore extends State<SelectStore> {
                       mainAxisSpacing: 4.0),
                   itemCount: _stores.length,
                   itemBuilder: (context, index) => Card(
+                    elevation: 3.0,
                     color: mapColors(_stores[index].color),
                     child: InkWell(
                       onTap: () => this

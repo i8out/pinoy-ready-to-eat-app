@@ -21,7 +21,16 @@ class _FeatureState extends State<Feature> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Ready To Eat'),
+        title: Text('Eateries'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.search,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          )
+        ],
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -30,7 +39,7 @@ class _FeatureState extends State<Feature> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.fastfood),
-            title: Text('Stores'),
+            title: Text('Near By'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.assignment_ind),
