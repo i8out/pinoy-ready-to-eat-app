@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/meal.dart';
+import 'package:flutter_app/widgets/favorite_icon.dart';
 import 'package:flutter_app/widgets/food_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
@@ -60,46 +61,115 @@ class _SelectMeals extends State<SelectMeals> {
               } else if (state is DisplayMeals) {
                 return SafeArea(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 4.0,
-                          mainAxisSpacing: 4.0),
-                      itemCount: _meals.length,
-                      itemBuilder: (context, index) => Card(
-                        color: mapColors(this._color),
-                        child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              _meals[index].orderQty += 1;
-                            });
-                            print(_meals[index].iD +
-                                " order " +
-                                _meals[index].orderQty.toString());
-                          },
-                          child: Column(
-                            children: <Widget>[
-                              FoodImage(_meals[index].image,
-                                  _meals[index].orderQty.toString()),
-                              Text(
-                                _meals[index].name,
-                                style: GoogleFonts.lato(
-                                    textStyle:
-                                        Theme.of(context).textTheme.headline5),
-                              ),
-                              Text(
-                                _meals[index].price,
-                                style: GoogleFonts.lato(
-                                    textStyle:
-                                        Theme.of(context).textTheme.subtitle1),
-                              ),
-                            ],
+                      padding: const EdgeInsets.all(8.0),
+                      child: CustomScrollView(
+                        slivers: <Widget>[
+                          SliverAppBar(
+                            automaticallyImplyLeading: false,
+                            floating: true,
+                            backgroundColor: Colors.white,
+                            title: Text(
+                              'Tap on item to order',
+                              style: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.subtitle1),
+                            ),
                           ),
-                        ),
+                          SliverGrid(
+                            gridDelegate:
+                                SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 200.0,
+                              mainAxisSpacing: 4.0,
+                              crossAxisSpacing: 4.0,
+                              childAspectRatio: 1.0,
+                            ),
+                            delegate: SliverChildBuilderDelegate(
+                              (BuildContext context, int index) {
+                                return Card(
+                                  color: mapColors(this._color),
+                                  child: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        _meals[index].orderQty += 1;
+                                      });
+                                      print(_meals[index].iD +
+                                          " order " +
+                                          _meals[index].orderQty.toString());
+                                    },
+                                    child: Column(
+                                      children: <Widget>[
+                                        FoodImage(_meals[index].image,
+                                            _meals[index].orderQty.toString()),
+                                        Text(
+                                          _meals[index].name,
+                                          style: GoogleFonts.lato(
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .headline5),
+                                        ),
+                                        Text(
+                                          _meals[index].price,
+                                          style: GoogleFonts.lato(
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .subtitle1),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: FavoriteIcon(
+                                              _meals[index].rating),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                              childCount: _meals.length,
+                            ),
+                          ),
+                        ],
+                      )
+
+//                    GridView.builder(
+//                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                          crossAxisCount: 2,
+//                          crossAxisSpacing: 4.0,
+//                          mainAxisSpacing: 4.0),
+//                      itemCount: _meals.length,
+//                      itemBuilder: (context, index) => Card(
+//                        color: mapColors(this._color),
+//                        child: InkWell(
+//                          onTap: () {
+//                            setState(() {
+//                              _meals[index].orderQty += 1;
+//                            });
+//                            print(_meals[index].iD +
+//                                " order " +
+//                                _meals[index].orderQty.toString());
+//                          },
+//                          child: Column(
+//                            children: <Widget>[
+//                              FoodImage(_meals[index].image,
+//                                  _meals[index].orderQty.toString()),
+//                              Text(
+//                                _meals[index].name,
+//                                style: GoogleFonts.lato(
+//                                    textStyle:
+//                                        Theme.of(context).textTheme.headline5),
+//                              ),
+//                              Text(
+//                                _meals[index].price,
+//                                style: GoogleFonts.lato(
+//                                    textStyle:
+//                                        Theme.of(context).textTheme.subtitle1),
+//                              ),
+//                            ],
+//                          ),
+//                        ),
+//                      ),
+//                    ),
+
                       ),
-                    ),
-                  ),
                 );
               } else {
                 return Center(
