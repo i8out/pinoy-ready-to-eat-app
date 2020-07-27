@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/meal.dart';
-import 'package:flutter_app/widgets/record_image.dart';
+import 'package:flutter_app/widgets/food_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
 
@@ -15,6 +15,7 @@ class SelectMeals extends StatefulWidget {
 class _SelectMeals extends State<SelectMeals> {
   SelectMealsBloc _bloc;
   final String _color;
+  String _orderQty;
 
   _SelectMeals(
     this._color,
@@ -22,6 +23,7 @@ class _SelectMeals extends State<SelectMeals> {
 
   @override
   void initState() {
+    this._orderQty = '';
     this._bloc = SelectMealsBloc();
     this._bloc.add(GetMeals());
     super.initState();
@@ -73,11 +75,17 @@ class _SelectMeals extends State<SelectMeals> {
                       color: mapColors(this._color),
                       child: InkWell(
                         onTap: () {
-                          print(_meals[index].iD);
+                          setState(() {
+                            _meals[index].orderQty += 1;
+                            _orderQty = _meals[index].orderQty.toString();
+                          });
+                          print(_meals[index].iD +
+                              " order " +
+                              _meals[index].orderQty.toString());
                         },
                         child: Column(
                           children: <Widget>[
-                            RecordImage(_meals[index].image),
+                            FoodImage(_meals[index].image, _orderQty),
                             Text(
                               _meals[index].name,
                               style: Theme.of(context).textTheme.headline5,
