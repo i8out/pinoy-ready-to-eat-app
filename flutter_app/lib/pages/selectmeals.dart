@@ -57,7 +57,8 @@ class _SelectMeals extends State<SelectMeals> {
               return Center(
                 child: Text(
                   'Load Error',
-                  style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.headline4),
+                  style: GoogleFonts.lato(
+                      textStyle: Theme.of(context).textTheme.headline4),
                 ),
               );
             } else if (state is DisplayMeals) {
@@ -83,14 +84,19 @@ class _SelectMeals extends State<SelectMeals> {
                         },
                         child: Column(
                           children: <Widget>[
-                            FoodImage(_meals[index].image, _meals[index].orderQty.toString()),
+                            FoodImage(_meals[index].image,
+                                _meals[index].orderQty.toString()),
                             Text(
                               _meals[index].name,
-                              style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.headline5),
+                              style: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.headline5),
                             ),
                             Text(
                               _meals[index].price,
-                              style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.subtitle1),
+                              style: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.subtitle1),
                             ),
                           ],
                         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/selectstore.dart';
+import 'package:flutter_app/pages/feature.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() => runApp(MyApp());
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (BuildContext context) {},
-        child: SelectStore(),
+        child: Feature(),
       ),
     );
   }

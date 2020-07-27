@@ -36,61 +36,61 @@ class _SelectStore extends State<SelectStore> {
       listener: (context, state) {
         _stores = state.stores;
       },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Select Kitchen'),
-        ),
-        body: BlocBuilder<SelectStoreBloc, SelectStoreState>(
-          bloc: this._bloc,
-          builder: (context, state) {
-            if (state is PageLoading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is LoadError) {
-              return Center(
-                child: Text(
-                  'Load Error',
-                  style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.headline4),
-                ),
-              );
-            } else if (state is DisplayPage) {
-              return SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 4.0,
-                        mainAxisSpacing: 4.0),
-                    itemCount: _stores.length,
-                    itemBuilder: (context, index) => Card(
-                      color: mapColors(_stores[index].color),
-                      child: InkWell(
-                        onTap: () => this
-                            ._bloc
-                            .add(LoadMeals(context, _stores[index].color)),
-                        child: Column(
-                          children: <Widget>[
-                            RecordImage(_stores[index].image),
-                            Text(
-                              _stores[index].storeName,
-                              style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.headline5),
-                            ),
-                            Text(
-                              _stores[index].address1,
-                              style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.subtitle1),
-                            ),
-                          ],
-                        ),
+      child: BlocBuilder<SelectStoreBloc, SelectStoreState>(
+        bloc: this._bloc,
+        builder: (context, state) {
+          if (state is LoadError) {
+            return Center(
+              child: Text(
+                'Load Error',
+                style: GoogleFonts.lato(
+                    textStyle: Theme.of(context).textTheme.headline4),
+              ),
+            );
+          } else if (state is DisplayPage) {
+            return SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 4.0,
+                      mainAxisSpacing: 4.0),
+                  itemCount: _stores.length,
+                  itemBuilder: (context, index) => Card(
+                    color: mapColors(_stores[index].color),
+                    child: InkWell(
+                      onTap: () => this
+                          ._bloc
+                          .add(LoadMeals(context, _stores[index].color)),
+                      child: Column(
+                        children: <Widget>[
+                          RecordImage(_stores[index].image),
+                          Text(
+                            _stores[index].storeName,
+                            style: GoogleFonts.lato(
+                                textStyle:
+                                    Theme.of(context).textTheme.headline5),
+                          ),
+                          Text(
+                            _stores[index].address1,
+                            style: GoogleFonts.lato(
+                                textStyle:
+                                    Theme.of(context).textTheme.subtitle1),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
-              );
-            }
-          },
-        ),
+              ),
+            );
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
       ),
     );
   }
