@@ -66,7 +66,9 @@ class _SelectStore extends State<SelectStore> {
                     itemBuilder: (context, index) => Card(
                       color: mapColors(_stores[index].color),
                       child: InkWell(
-                        onTap: () => this._bloc.add(LoadMeals(context)),
+                        onTap: () => this
+                            ._bloc
+                            .add(LoadMeals(context, _stores[index].color)),
                         child: Column(
                           children: <Widget>[
                             RecordImage(_stores[index].image),
@@ -96,21 +98,31 @@ class _SelectStore extends State<SelectStore> {
     print('me ' + dataColor);
     Color setColor;
     switch (dataColor) {
-      case '0xFFFFF9C4':{
-        setColor = const Color(0xFFFFF9C4);
-      } break;
-      case '0xFFFFCDD2':{
-        setColor = const Color(0xFFFFCDD2);
-      } break;
-      case '0xFFB2DFDB':{
-        setColor = const Color(0xFFB2DFDB);
-      } break;
-      case '0xFFB3E5FC':{
-        setColor = const Color(0xFFB3E5FC);
-      } break;
-      default: {
-        setColor = const Color(0xFFBBDEFB);
-      } break;
+      case '0xFFFFF9C4':
+        {
+          setColor = const Color(0xFFFFF9C4);
+        }
+        break;
+      case '0xFFFFCDD2':
+        {
+          setColor = const Color(0xFFFFCDD2);
+        }
+        break;
+      case '0xFFB2DFDB':
+        {
+          setColor = const Color(0xFFB2DFDB);
+        }
+        break;
+      case '0xFFB3E5FC':
+        {
+          setColor = const Color(0xFFB3E5FC);
+        }
+        break;
+      default:
+        {
+          setColor = const Color(0xFFBBDEFB);
+        }
+        break;
     }
     return setColor;
   }

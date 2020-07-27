@@ -5,14 +5,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
 
 class SelectMeals extends StatefulWidget {
-  SelectMeals({Key key}) : super(key: key);
+  final String _color;
+  SelectMeals(this._color, {Key key}) : super(key: key);
 
   @override
-  _SelectMeals createState() => _SelectMeals();
+  _SelectMeals createState() => _SelectMeals(this._color);
 }
 
 class _SelectMeals extends State<SelectMeals> {
   SelectMealsBloc _bloc;
+  final String _color;
+
+  _SelectMeals(
+    this._color,
+  );
 
   @override
   void initState() {
@@ -64,7 +70,7 @@ class _SelectMeals extends State<SelectMeals> {
                         mainAxisSpacing: 4.0),
                     itemCount: _meals.length,
                     itemBuilder: (context, index) => Card(
-                      color: Colors.yellow[100],
+                      color: mapColors(this._color),
                       child: InkWell(
                         onTap: () {
                           print(_meals[index].iD);
@@ -92,5 +98,38 @@ class _SelectMeals extends State<SelectMeals> {
         ),
       ),
     );
+  }
+
+  Color mapColors(String dataColor) {
+    print('meal ' + dataColor);
+    Color setColor;
+    switch (dataColor) {
+      case '0xFFFFF9C4':
+        {
+          setColor = const Color(0xFFFFF9C4);
+        }
+        break;
+      case '0xFFFFCDD2':
+        {
+          setColor = const Color(0xFFFFCDD2);
+        }
+        break;
+      case '0xFFB2DFDB':
+        {
+          setColor = const Color(0xFFB2DFDB);
+        }
+        break;
+      case '0xFFB3E5FC':
+        {
+          setColor = const Color(0xFFB3E5FC);
+        }
+        break;
+      default:
+        {
+          setColor = const Color(0xFFBBDEFB);
+        }
+        break;
+    }
+    return setColor;
   }
 }
