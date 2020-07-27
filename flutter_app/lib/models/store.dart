@@ -9,6 +9,7 @@ class Store {
   String closingTime;
   String image;
   String color;
+  String rating;
 
   Store({
       this.iD = '',
@@ -20,7 +21,8 @@ class Store {
       this.openingTime = '',
       this.closingTime = '',
       this.image = '',
-      this.color = ''});
+      this.color = '',
+      this.rating = '',});
 
   Store.fromJson(dynamic json) {
     this.iD = json['iD'];
@@ -33,5 +35,6 @@ class Store {
     this.closingTime = json['closingTime'];
     this.image = json['image'];
     this.color = json['color'];
+    this.rating = json['rating'];
   }
 }

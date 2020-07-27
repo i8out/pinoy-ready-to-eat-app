@@ -47,67 +47,66 @@ class _SelectMeals extends State<SelectMeals> {
           title: Text('Select Meals'),
         ),
         body: BlocBuilder<SelectMealsBloc, SelectMealsState>(
-          bloc: this._bloc,
-          builder: (context, state) {
-            if (state is MealsLoading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is LoadMealsError) {
-              return Center(
-                child: Text(
-                  'Load Error',
-                  style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.headline4),
-                ),
-              );
-            } else if (state is DisplayMeals) {
-              return SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 4.0,
-                        mainAxisSpacing: 4.0),
-                    itemCount: _meals.length,
-                    itemBuilder: (context, index) => Card(
-                      color: mapColors(this._color),
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            _meals[index].orderQty += 1;
-                          });
-                          print(_meals[index].iD +
-                              " order " +
-                              _meals[index].orderQty.toString());
-                        },
-                        child: Column(
-                          children: <Widget>[
-                            FoodImage(_meals[index].image,
-                                _meals[index].orderQty.toString()),
-                            Text(
-                              _meals[index].name,
-                              style: GoogleFonts.lato(
-                                  textStyle:
-                                      Theme.of(context).textTheme.headline5),
-                            ),
-                            Text(
-                              _meals[index].price,
-                              style: GoogleFonts.lato(
-                                  textStyle:
-                                      Theme.of(context).textTheme.subtitle1),
-                            ),
-                          ],
+            bloc: this._bloc,
+            builder: (context, state) {
+              if (state is LoadMealsError) {
+                return Center(
+                  child: Text(
+                    'Load Error',
+                    style: GoogleFonts.lato(
+                        textStyle: Theme.of(context).textTheme.headline4),
+                  ),
+                );
+              } else if (state is DisplayMeals) {
+                return SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 4.0,
+                          mainAxisSpacing: 4.0),
+                      itemCount: _meals.length,
+                      itemBuilder: (context, index) => Card(
+                        color: mapColors(this._color),
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              _meals[index].orderQty += 1;
+                            });
+                            print(_meals[index].iD +
+                                " order " +
+                                _meals[index].orderQty.toString());
+                          },
+                          child: Column(
+                            children: <Widget>[
+                              FoodImage(_meals[index].image,
+                                  _meals[index].orderQty.toString()),
+                              Text(
+                                _meals[index].name,
+                                style: GoogleFonts.lato(
+                                    textStyle:
+                                        Theme.of(context).textTheme.headline5),
+                              ),
+                              Text(
+                                _meals[index].price,
+                                style: GoogleFonts.lato(
+                                    textStyle:
+                                        Theme.of(context).textTheme.subtitle1),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
-            }
-          },
-        ),
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            }),
       ),
     );
   }

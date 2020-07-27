@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/store.dart';
+import 'package:flutter_app/widgets/favorite_icon.dart';
 import 'package:flutter_app/widgets/record_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
@@ -70,13 +71,17 @@ class _SelectStore extends State<SelectStore> {
                             _stores[index].storeName,
                             style: GoogleFonts.lato(
                                 textStyle:
-                                    Theme.of(context).textTheme.headline5),
+                                    Theme.of(context).textTheme.headline6),
                           ),
                           Text(
                             _stores[index].address1,
                             style: GoogleFonts.lato(
                                 textStyle:
                                     Theme.of(context).textTheme.subtitle1),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: FavoriteIcon(_stores[index].rating),
                           ),
                         ],
                       ),
