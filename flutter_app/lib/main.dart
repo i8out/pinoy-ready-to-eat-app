@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/selectstore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,11 +20,11 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.lightBlue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-          textTheme: GoogleFonts.oswaldTextTheme(
-            Theme.of(context).textTheme,
-          ),
+        textTheme: TextTheme(
+          headline2: TextStyle(color: Colors.white),
+        ),
       ),
       home: BlocProvider(
         create: (BuildContext context) {},

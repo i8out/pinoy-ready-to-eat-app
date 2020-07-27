@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
+import 'package:google_fonts/google_fonts.dart';
 
 class FoodImage extends StatelessWidget {
   final String _photo;
@@ -23,7 +24,7 @@ class FoodImage extends StatelessWidget {
           Center(
             child: Text(
               _orderQty,
-              style: Theme.of(context).textTheme.headline2,
+              style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.headline2),
             ),
           )
         ],

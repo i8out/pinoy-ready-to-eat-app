@@ -3,6 +3,7 @@ import 'package:flutter_app/models/store.dart';
 import 'package:flutter_app/widgets/record_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SelectStore extends StatefulWidget {
   SelectStore({Key key}) : super(key: key);
@@ -50,7 +51,7 @@ class _SelectStore extends State<SelectStore> {
               return Center(
                 child: Text(
                   'Load Error',
-                  style: Theme.of(context).textTheme.headline4,
+                  style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.headline4),
                 ),
               );
             } else if (state is DisplayPage) {
@@ -74,11 +75,11 @@ class _SelectStore extends State<SelectStore> {
                             RecordImage(_stores[index].image),
                             Text(
                               _stores[index].storeName,
-                              style: Theme.of(context).textTheme.headline5,
+                              style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.headline5),
                             ),
                             Text(
                               _stores[index].address1,
-                              style: Theme.of(context).textTheme.subtitle1,
+                              style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.subtitle1),
                             ),
                           ],
                         ),

@@ -3,6 +3,7 @@ import 'package:flutter_app/models/meal.dart';
 import 'package:flutter_app/widgets/food_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SelectMeals extends StatefulWidget {
   final String _color;
@@ -15,7 +16,6 @@ class SelectMeals extends StatefulWidget {
 class _SelectMeals extends State<SelectMeals> {
   SelectMealsBloc _bloc;
   final String _color;
-  String _orderQty;
 
   _SelectMeals(
     this._color,
@@ -23,7 +23,6 @@ class _SelectMeals extends State<SelectMeals> {
 
   @override
   void initState() {
-    this._orderQty = '';
     this._bloc = SelectMealsBloc();
     this._bloc.add(GetMeals());
     super.initState();
@@ -58,7 +57,7 @@ class _SelectMeals extends State<SelectMeals> {
               return Center(
                 child: Text(
                   'Load Error',
-                  style: Theme.of(context).textTheme.headline4,
+                  style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.headline4),
                 ),
               );
             } else if (state is DisplayMeals) {
@@ -77,7 +76,6 @@ class _SelectMeals extends State<SelectMeals> {
                         onTap: () {
                           setState(() {
                             _meals[index].orderQty += 1;
-                            _orderQty = _meals[index].orderQty.toString();
                           });
                           print(_meals[index].iD +
                               " order " +
@@ -85,14 +83,14 @@ class _SelectMeals extends State<SelectMeals> {
                         },
                         child: Column(
                           children: <Widget>[
-                            FoodImage(_meals[index].image, _orderQty),
+                            FoodImage(_meals[index].image, _meals[index].orderQty.toString()),
                             Text(
                               _meals[index].name,
-                              style: Theme.of(context).textTheme.headline5,
+                              style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.headline5),
                             ),
                             Text(
                               _meals[index].price,
-                              style: Theme.of(context).textTheme.subtitle1,
+                              style: GoogleFonts.lato(textStyle: Theme.of(context).textTheme.subtitle1),
                             ),
                           ],
                         ),
