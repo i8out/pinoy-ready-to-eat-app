@@ -13,6 +13,13 @@ class FavoriteIcon extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0,0,60,0),
+            child: Icon(
+              Icons.phone,
+              size: 18.0,
+            ),
+          ),
           Icon(
             Icons.favorite,
             color: Colors.pink,
@@ -44,6 +51,13 @@ class FavoriteIcon extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0,0,60,0),
+            child: Icon(
+              Icons.phone,
+              size: 18.0,
+            ),
+          ),
           Icon(
             Icons.favorite,
             color: Colors.pink,

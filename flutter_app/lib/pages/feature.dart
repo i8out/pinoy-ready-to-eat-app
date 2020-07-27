@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/profile.dart';
+import 'package:flutter_app/pages/review.dart';
 import 'package:flutter_app/pages/selectstore.dart';
 
 class Feature extends StatefulWidget {
@@ -13,6 +14,7 @@ class _FeatureState extends State<Feature> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     SelectStore(),
+    Review(),
     Profile(),
   ];
 
@@ -40,6 +42,10 @@ class _FeatureState extends State<Feature> {
           BottomNavigationBarItem(
             icon: Icon(Icons.fastfood),
             title: Text('Near By'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.rate_review),
+            title: Text('Review'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.assignment_ind),
