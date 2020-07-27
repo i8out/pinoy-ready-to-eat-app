@@ -9,5 +9,6 @@ class GetStores extends SelectStoreEvent {
 
 class LoadMeals extends SelectStoreEvent {
   BuildContext context;
-  LoadMeals(this.context);
+  String color;
+  LoadMeals(this.context, this.color);
 }
