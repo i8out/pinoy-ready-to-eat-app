@@ -22,7 +22,7 @@ class SelectStoreBloc extends Bloc<SelectStoreEvent, SelectStoreState> {
     } else if (event is LoadMeals) {
       Navigator.push(
         event.context,
-        MaterialPageRoute(builder: (context) => SelectMeals()),
+        MaterialPageRoute(builder: (context) => SelectMeals(event.color)),
       );
     }
   }
