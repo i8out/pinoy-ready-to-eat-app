@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/models/store.dart';
+import 'package:flutter_app/models/meal.dart';
 import 'package:flutter_app/widgets/record_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
 
-class SelectStore extends StatefulWidget {
-  SelectStore({Key key}) : super(key: key);
+class SelectMeals extends StatefulWidget {
+  SelectMeals({Key key}) : super(key: key);
 
   @override
-  _SelectStore createState() => _SelectStore();
+  _SelectMeals createState() => _SelectMeals();
 }
 
-class _SelectStore extends State<SelectStore> {
-  SelectStoreBloc _bloc;
+class _SelectMeals extends State<SelectMeals> {
+  SelectMealsBloc _bloc;
 
   @override
   void initState() {
-    this._bloc = SelectStoreBloc();
-    this._bloc.add(GetStores());
+    this._bloc = SelectMealsBloc();
+    this._bloc.add(GetMeals());
     super.initState();
   }
 
@@ -27,33 +27,33 @@ class _SelectStore extends State<SelectStore> {
     super.dispose();
   }
 
-  List<Store> _stores;
+  List<Meal> _meals;
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SelectStoreBloc, SelectStoreState>(
+    return BlocListener<SelectMealsBloc, SelectMealsState>(
       bloc: this._bloc,
       listener: (context, state) {
-        _stores = state.stores;
+        _meals = state.meals;
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Select Kitchen'),
+          title: Text('Select Meals'),
         ),
-        body: BlocBuilder<SelectStoreBloc, SelectStoreState>(
+        body: BlocBuilder<SelectMealsBloc, SelectMealsState>(
           bloc: this._bloc,
           builder: (context, state) {
-            if (state is PageLoading) {
+            if (state is MealsLoading) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is LoadError) {
+            } else if (state is LoadMealsError) {
               return Center(
                 child: Text(
                   'Load Error',
                   style: Theme.of(context).textTheme.headline4,
                 ),
               );
-            } else if (state is DisplayPage) {
+            } else if (state is DisplayMeals) {
               return SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -62,20 +62,22 @@ class _SelectStore extends State<SelectStore> {
                         crossAxisCount: 2,
                         crossAxisSpacing: 4.0,
                         mainAxisSpacing: 4.0),
-                    itemCount: _stores.length,
+                    itemCount: _meals.length,
                     itemBuilder: (context, index) => Card(
-                      color: mapColors(_stores[index].color),
+                      color: Colors.yellow[100],
                       child: InkWell(
-                        onTap: () => this._bloc.add(LoadMeals(context)),
+                        onTap: () {
+                          print(_meals[index].iD);
+                        },
                         child: Column(
                           children: <Widget>[
-                            RecordImage(_stores[index].image),
+                            RecordImage(_meals[index].image),
                             Text(
-                              _stores[index].storeName,
+                              _meals[index].name,
                               style: Theme.of(context).textTheme.headline5,
                             ),
                             Text(
-                              _stores[index].address1,
+                              _meals[index].price,
                               style: Theme.of(context).textTheme.subtitle1,
                             ),
                           ],
@@ -90,28 +92,5 @@ class _SelectStore extends State<SelectStore> {
         ),
       ),
     );
-  }
-
-  Color mapColors(String dataColor) {
-    print('me ' + dataColor);
-    Color setColor;
-    switch (dataColor) {
-      case '0xFFFFF9C4':{
-        setColor = const Color(0xFFFFF9C4);
-      } break;
-      case '0xFFFFCDD2':{
-        setColor = const Color(0xFFFFCDD2);
-      } break;
-      case '0xFFB2DFDB':{
-        setColor = const Color(0xFFB2DFDB);
-      } break;
-      case '0xFFB3E5FC':{
-        setColor = const Color(0xFFB3E5FC);
-      } break;
-      default: {
-        setColor = const Color(0xFFBBDEFB);
-      } break;
-    }
-    return setColor;
   }
 }
