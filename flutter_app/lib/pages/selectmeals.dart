@@ -4,6 +4,7 @@ import 'package:flutter_app/widgets/favorite_icon.dart';
 import 'package:flutter_app/widgets/food_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SelectMeals extends StatefulWidget {
@@ -46,6 +47,23 @@ class _SelectMeals extends State<SelectMeals> {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Select Meals'),
+        ),
+        floatingActionButton: SpeedDial(
+          animatedIcon: AnimatedIcons.menu_close,
+          children: [
+            SpeedDialChild(
+              child: Icon(Icons.undo, color: Colors.white),
+              onTap: () {
+                this._bloc.add(
+                      GetMeals(),
+                    );
+              },
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.arrow_forward, color: Colors.white),
+              onTap: () => print('SECOND CHILD'),
+            ),
+          ],
         ),
         body: BlocBuilder<SelectMealsBloc, SelectMealsState>(
             bloc: this._bloc,
@@ -98,8 +116,13 @@ class _SelectMeals extends State<SelectMeals> {
                                     },
                                     child: Column(
                                       children: <Widget>[
-                                        FoodImage(_meals[index].image,
-                                            _meals[index].orderQty.toString()),
+                                        FoodImage(
+                                            _meals[index].image,
+                                            _meals[index].orderQty == 0
+                                                ? ''
+                                                : _meals[index]
+                                                    .orderQty
+                                                    .toString()),
                                         Text(
                                           _meals[index].name,
                                           style: GoogleFonts.lato(
@@ -128,48 +151,7 @@ class _SelectMeals extends State<SelectMeals> {
                             ),
                           ),
                         ],
-                      )
-
-//                    GridView.builder(
-//                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//                          crossAxisCount: 2,
-//                          crossAxisSpacing: 4.0,
-//                          mainAxisSpacing: 4.0),
-//                      itemCount: _meals.length,
-//                      itemBuilder: (context, index) => Card(
-//                        color: mapColors(this._color),
-//                        child: InkWell(
-//                          onTap: () {
-//                            setState(() {
-//                              _meals[index].orderQty += 1;
-//                            });
-//                            print(_meals[index].iD +
-//                                " order " +
-//                                _meals[index].orderQty.toString());
-//                          },
-//                          child: Column(
-//                            children: <Widget>[
-//                              FoodImage(_meals[index].image,
-//                                  _meals[index].orderQty.toString()),
-//                              Text(
-//                                _meals[index].name,
-//                                style: GoogleFonts.lato(
-//                                    textStyle:
-//                                        Theme.of(context).textTheme.headline5),
-//                              ),
-//                              Text(
-//                                _meals[index].price,
-//                                style: GoogleFonts.lato(
-//                                    textStyle:
-//                                        Theme.of(context).textTheme.subtitle1),
-//                              ),
-//                            ],
-//                          ),
-//                        ),
-//                      ),
-//                    ),
-
-                      ),
+                      )),
                 );
               } else {
                 return Center(
