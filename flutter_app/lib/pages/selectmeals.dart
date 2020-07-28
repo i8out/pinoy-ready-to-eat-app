@@ -66,9 +66,12 @@ class _SelectMeals extends State<SelectMeals> {
         ),
         floatingActionButton: SpeedDial(
           animatedIcon: AnimatedIcons.menu_close,
+          backgroundColor: Colors.red,
+          foregroundColor: Colors.yellow,
           children: [
             SpeedDialChild(
-              child: Icon(Icons.undo, color: Colors.white),
+              child: Icon(Icons.undo, color: Colors.yellow),
+              backgroundColor: Colors.red,
               onTap: () {
                 this._bloc.add(
                       GetMeals(),
@@ -76,7 +79,8 @@ class _SelectMeals extends State<SelectMeals> {
               },
             ),
             SpeedDialChild(
-              child: Icon(Icons.arrow_forward, color: Colors.white),
+              child: Icon(Icons.arrow_forward, color: Colors.yellow),
+              backgroundColor: Colors.red,
               onTap: () => print('SECOND CHILD'),
             ),
           ],
