@@ -103,7 +103,7 @@ class _SelectMeals extends State<SelectMeals> {
                             backgroundColor: Colors.white,
                             title: Text(
                               'tap & tap on item to order, reset if needed',
-                              style: Theme.of(context).textTheme.subtitle1,
+                              style: Theme.of(context).textTheme.bodyText1,
                             ),
                           ),
                           SliverGrid(

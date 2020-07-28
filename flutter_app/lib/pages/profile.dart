@@ -50,7 +50,7 @@ class Profile extends StatelessWidget {
             ),
             subtitle: Text(
               '${profiles[index]['subcaption']}',
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.bodyText1,
             ),
             trailing: Icon(Icons.arrow_forward),
           ),
