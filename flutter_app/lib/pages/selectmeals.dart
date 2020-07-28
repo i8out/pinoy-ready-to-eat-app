@@ -86,95 +86,71 @@ class _SelectMeals extends State<SelectMeals> {
           ],
         ),
         body: BlocBuilder<SelectMealsBloc, SelectMealsState>(
-            bloc: this._bloc,
-            builder: (context, state) {
-              if (state is LoadMealsError) {
-                return Center(
-                  child: Text(
-                    'Load Error',
-                    style: Theme.of(context).textTheme.headline4,
+          bloc: this._bloc,
+          builder: (context, state) {
+            if (state is LoadMealsError) {
+              return Center(
+                child: Text(
+                  'Load Error',
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              );
+            } else if (state is DisplayMeals) {
+              return SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 4.0,
+                      mainAxisSpacing: 4.0,
+                    ),
+                    itemCount: _meals.length,
+                    itemBuilder: (BuildContext context, index) => Card(
+                      elevation: 3.0,
+                      color: mapColors(this._color),
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            _meals[index].orderQty += 1;
+                          });
+                          print(_meals[index].iD +
+                              " order " +
+                              _meals[index].orderQty.toString());
+                        },
+                        child: Column(
+                          children: <Widget>[
+                            FoodImage(
+                                _meals[index].image,
+                                _meals[index].orderQty == 0
+                                    ? ''
+                                    : _meals[index].orderQty.toString()),
+                            Text(
+                              _meals[index].name,
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                            Text(
+                              'P' + _meals[index].price,
+                              style: Theme.of(context).textTheme.subtitle1,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: FavoriteIcon(_meals[index].rating),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-                );
-              } else if (state is DisplayMeals) {
-                return SafeArea(
-                  child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CustomScrollView(
-                        slivers: <Widget>[
-                          SliverAppBar(
-                            automaticallyImplyLeading: false,
-                            floating: true,
-                            backgroundColor: Colors.white,
-                            title: Text(
-                              'tap & tap on item to order, reset if needed',
-                              style: Theme.of(context).textTheme.bodyText1,
-                            ),
-                          ),
-                          SliverGrid(
-                            gridDelegate:
-                                SliverGridDelegateWithMaxCrossAxisExtent(
-                              maxCrossAxisExtent: 200.0,
-                              mainAxisSpacing: 4.0,
-                              crossAxisSpacing: 4.0,
-                              childAspectRatio: 1.0,
-                            ),
-                            delegate: SliverChildBuilderDelegate(
-                              (BuildContext context, int index) {
-                                return Card(
-                                  elevation: 3.0,
-                                  color: mapColors(this._color),
-                                  child: InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        _meals[index].orderQty += 1;
-                                      });
-                                      print(_meals[index].iD +
-                                          " order " +
-                                          _meals[index].orderQty.toString());
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        FoodImage(
-                                            _meals[index].image,
-                                            _meals[index].orderQty == 0
-                                                ? ''
-                                                : _meals[index]
-                                                    .orderQty
-                                                    .toString()),
-                                        Text(
-                                          _meals[index].name,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline6,
-                                        ),
-                                        Text(
-                                          'P' + _meals[index].price,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subtitle1,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(4.0),
-                                          child: FavoriteIcon(
-                                              _meals[index].rating),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                              childCount: _meals.length,
-                            ),
-                          ),
-                        ],
-                      )),
-                );
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            }),
+                ),
+              );
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
       ),
     );
   }

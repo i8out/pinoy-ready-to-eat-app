@@ -52,9 +52,10 @@ class _SelectStore extends State<SelectStore> {
                 padding: const EdgeInsets.all(8.0),
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 4.0,
-                      mainAxisSpacing: 4.0),
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 4.0,
+                    mainAxisSpacing: 4.0,
+                  ),
                   itemCount: _stores.length,
                   itemBuilder: (context, index) => Card(
                     elevation: 3.0,
