@@ -29,6 +29,7 @@ class _FeatureState extends State<Feature> {
           style: TextStyle(
             fontFamily: 'Lato',
             fontSize: 16,
+            color: Colors.yellow,
           ),
         ),
         actions: <Widget>[

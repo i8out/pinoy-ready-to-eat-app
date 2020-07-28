@@ -50,6 +50,7 @@ class _SelectMeals extends State<SelectMeals> {
             style: TextStyle(
               fontFamily: 'Lato',
               fontSize: 16,
+              color: Colors.yellow,
             ),
           ),
           backgroundColor: Colors.red,

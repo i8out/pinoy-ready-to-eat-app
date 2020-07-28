@@ -14,7 +14,7 @@ class FavoriteIcon extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 60, 0),
+            padding: const EdgeInsets.fromLTRB(0, 0, 50, 0),
             child: Icon(
               Icons.phone,
               size: 18.0,
@@ -52,7 +52,7 @@ class FavoriteIcon extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 60, 0),
+            padding: const EdgeInsets.fromLTRB(0, 0, 50, 0),
             child: Icon(
               Icons.phone,
               size: 18.0,
@@ -86,7 +86,7 @@ class FavoriteIcon extends StatelessWidget {
         children: <Widget>[
           Icon(
             Icons.restaurant,
-            size: 18.0,
+            size: 16.0,
           ),
           Text(
             '  9 left',

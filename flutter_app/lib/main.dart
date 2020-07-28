@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: TextTheme(
           headline2: TextStyle(color: Colors.white),
+          headline6: TextStyle(fontSize: 18),
+          subtitle1:  TextStyle(fontSize: 12),
         ),
       ),
       home: BlocProvider(
