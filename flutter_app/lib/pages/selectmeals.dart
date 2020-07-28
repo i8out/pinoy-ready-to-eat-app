@@ -5,7 +5,6 @@ import 'package:flutter_app/widgets/food_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SelectMeals extends StatefulWidget {
   final String _color;
@@ -46,7 +45,13 @@ class _SelectMeals extends State<SelectMeals> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Meals'),
+          title: Text(
+            'Meals',
+            style: TextStyle(
+              fontFamily: 'Lato',
+              fontSize: 16,
+            ),
+          ),
           actions: <Widget>[
             IconButton(
               icon: Icon(
@@ -81,8 +86,7 @@ class _SelectMeals extends State<SelectMeals> {
                 return Center(
                   child: Text(
                     'Load Error',
-                    style: GoogleFonts.lato(
-                        textStyle: Theme.of(context).textTheme.headline4),
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                 );
               } else if (state is DisplayMeals) {
@@ -96,10 +100,8 @@ class _SelectMeals extends State<SelectMeals> {
                             floating: true,
                             backgroundColor: Colors.white,
                             title: Text(
-                              'Tap on item to order',
-                              style: GoogleFonts.lato(
-                                  textStyle:
-                                      Theme.of(context).textTheme.subtitle1),
+                              'tap & tap on item to order, reset if needed',
+                              style: Theme.of(context).textTheme.subtitle1,
                             ),
                           ),
                           SliverGrid(
@@ -135,17 +137,15 @@ class _SelectMeals extends State<SelectMeals> {
                                                     .toString()),
                                         Text(
                                           _meals[index].name,
-                                          style: GoogleFonts.lato(
-                                              textStyle: Theme.of(context)
-                                                  .textTheme
-                                                  .headline6),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline6,
                                         ),
                                         Text(
                                           'P' + _meals[index].price,
-                                          style: GoogleFonts.lato(
-                                              textStyle: Theme.of(context)
-                                                  .textTheme
-                                                  .subtitle1),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subtitle1,
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.all(4.0),

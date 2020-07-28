@@ -23,7 +23,13 @@ class _FeatureState extends State<Feature> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Eateries'),
+        title: Text(
+          'Eateries',
+          style: TextStyle(
+            fontFamily: 'Lato',
+            fontSize: 16,
+          ),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -49,7 +55,7 @@ class _FeatureState extends State<Feature> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.assignment_ind),
-            title: Text('Profile'),
+            title: Text('Profiles'),
           )
         ],
       ),

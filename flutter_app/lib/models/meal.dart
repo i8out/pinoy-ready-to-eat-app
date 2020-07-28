@@ -7,6 +7,7 @@ class Meal {
   String monthStatistic;
   String image;
   String rating;
+  String available;
 
   Meal({
     this.iD = '',
@@ -17,6 +18,7 @@ class Meal {
     this.monthStatistic = '',
     this.image = '',
     this.rating = '',
+    this.available,
   });
 
   Meal.fromJson(dynamic json) {
@@ -28,5 +30,6 @@ class Meal {
     this.monthStatistic = json['monthStatistic'];
     this.image = json['image'];
     this.rating = json['rating'];
+    this.available = json['available'];
   }
 }
