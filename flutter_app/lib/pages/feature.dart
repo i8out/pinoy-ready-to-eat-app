@@ -23,6 +23,7 @@ class _FeatureState extends State<Feature> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        backgroundColor: Colors.red,
         title: Text(
           'Eateries',
           style: TextStyle(
@@ -47,7 +48,7 @@ class _FeatureState extends State<Feature> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.fastfood),
-            title: Text('Near By'),
+            title: Text('Eats'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.rate_review),

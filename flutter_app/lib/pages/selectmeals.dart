@@ -52,6 +52,7 @@ class _SelectMeals extends State<SelectMeals> {
               fontSize: 16,
             ),
           ),
+          backgroundColor: Colors.red,
           actions: <Widget>[
             IconButton(
               icon: Icon(
