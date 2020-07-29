@@ -108,7 +108,7 @@ class _SelectMeals extends State<SelectMeals> {
                     itemCount: _meals.length,
                     itemBuilder: (BuildContext context, index) => Card(
                       elevation: 3.0,
-                      color: mapColors(this._color),
+                      color: Colors.white,
                       child: InkWell(
                         onTap: () {
                           setState(() {
@@ -127,7 +127,12 @@ class _SelectMeals extends State<SelectMeals> {
                                     : _meals[index].orderQty.toString()),
                             Text(
                               _meals[index].name,
-                              style: Theme.of(context).textTheme.headline6,
+                              style: TextStyle(
+                                fontFamily: 'Lato',
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: mapColors(this._color),
+                              ),
                             ),
                             Text(
                               'P' + _meals[index].price,
@@ -161,27 +166,27 @@ class _SelectMeals extends State<SelectMeals> {
     switch (dataColor) {
       case '0xFFFFF9C4':
         {
-          setColor = const Color(0xFFFFF9C4);
+          setColor = const Color(0xFFFFA726);
         }
         break;
       case '0xFFFFCDD2':
         {
-          setColor = const Color(0xFFFFCDD2);
+          setColor = const Color(0xFFEF5350);
         }
         break;
       case '0xFFB2DFDB':
         {
-          setColor = const Color(0xFFB2DFDB);
+          setColor = const Color(0xFF66BB6A);
         }
         break;
       case '0xFFB3E5FC':
         {
-          setColor = const Color(0xFFB3E5FC);
+          setColor = const Color(0xFF42A5F5);
         }
         break;
       default:
         {
-          setColor = const Color(0xFFBBDEFB);
+          setColor = const Color(0xFF42A5F5);
         }
         break;
     }
