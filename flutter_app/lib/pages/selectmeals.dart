@@ -113,17 +113,8 @@ class _SelectMeals extends State<SelectMeals> {
                       color: Colors.white,
                       child: Column(
                         children: <Widget>[
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _meals[index].orderQty += 1;
-                              });
-                            },
-                            child: FoodImage(
-                                _meals[index].image,
-                                _meals[index].orderQty == 0
-                                    ? ''
-                                    : _meals[index].orderQty.toString()),
+                          FoodImage(
+                            _meals[index].image,
                           ),
                           MealName(_meals[index].name, this._color),
                           MealPrice(_meals[index].price),
