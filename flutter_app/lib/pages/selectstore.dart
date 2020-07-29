@@ -28,6 +28,38 @@ class _SelectStore extends State<SelectStore> {
     super.dispose();
   }
 
+  Color mapColors(String dataColor) {
+    Color setColor;
+    switch (dataColor) {
+      case '0xFFFFF9C4':
+        {
+          setColor = const Color(0xFFFFA726);
+        }
+        break;
+      case '0xFFFFCDD2':
+        {
+          setColor = const Color(0xFFEF5350);
+        }
+        break;
+      case '0xFFB2DFDB':
+        {
+          setColor = const Color(0xFF66BB6A);
+        }
+        break;
+      case '0xFFB3E5FC':
+        {
+          setColor = const Color(0xFF42A5F5);
+        }
+        break;
+      default:
+        {
+          setColor = const Color(0xFF42A5F5);
+        }
+        break;
+    }
+    return setColor;
+  }
+
   List<Store> _stores;
   @override
   Widget build(BuildContext context) {
@@ -98,38 +130,5 @@ class _SelectStore extends State<SelectStore> {
         },
       ),
     );
-  }
-
-  Color mapColors(String dataColor) {
-    print('me ' + dataColor);
-    Color setColor;
-    switch (dataColor) {
-      case '0xFFFFF9C4':
-        {
-          setColor = const Color(0xFFFFA726);
-        }
-        break;
-      case '0xFFFFCDD2':
-        {
-          setColor = const Color(0xFFEF5350);
-        }
-        break;
-      case '0xFFB2DFDB':
-        {
-          setColor = const Color(0xFF66BB6A);
-        }
-        break;
-      case '0xFFB3E5FC':
-        {
-          setColor = const Color(0xFF42A5F5);
-        }
-        break;
-      default:
-        {
-          setColor = const Color(0xFF42A5F5);
-        }
-        break;
-    }
-    return setColor;
   }
 }

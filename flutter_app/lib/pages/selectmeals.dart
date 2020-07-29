@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/models/meal.dart';
 import 'package:flutter_app/widgets/favorite_icon.dart';
 import 'package:flutter_app/widgets/food_image.dart';
+import 'package:flutter_app/widgets/meal_name.dart';
+import 'package:flutter_app/widgets/meal_price.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -109,41 +111,27 @@ class _SelectMeals extends State<SelectMeals> {
                     itemBuilder: (BuildContext context, index) => Card(
                       elevation: 3.0,
                       color: Colors.white,
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            _meals[index].orderQty += 1;
-                          });
-                          print(_meals[index].iD +
-                              " order " +
-                              _meals[index].orderQty.toString());
-                        },
-                        child: Column(
-                          children: <Widget>[
-                            FoodImage(
+                      child: Column(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _meals[index].orderQty += 1;
+                              });
+                            },
+                            child: FoodImage(
                                 _meals[index].image,
                                 _meals[index].orderQty == 0
                                     ? ''
                                     : _meals[index].orderQty.toString()),
-                            Text(
-                              _meals[index].name,
-                              style: TextStyle(
-                                fontFamily: 'Lato',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: mapColors(this._color),
-                              ),
-                            ),
-                            Text(
-                              'P' + _meals[index].price,
-                              style: Theme.of(context).textTheme.subtitle1,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: FavoriteIcon(_meals[index].rating),
-                            ),
-                          ],
-                        ),
+                          ),
+                          MealName(_meals[index].name, this._color),
+                          MealPrice(_meals[index].price),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: FavoriteIcon(_meals[index].rating),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -158,38 +146,5 @@ class _SelectMeals extends State<SelectMeals> {
         ),
       ),
     );
-  }
-
-  Color mapColors(String dataColor) {
-    print('meal ' + dataColor);
-    Color setColor;
-    switch (dataColor) {
-      case '0xFFFFF9C4':
-        {
-          setColor = const Color(0xFFFFA726);
-        }
-        break;
-      case '0xFFFFCDD2':
-        {
-          setColor = const Color(0xFFEF5350);
-        }
-        break;
-      case '0xFFB2DFDB':
-        {
-          setColor = const Color(0xFF66BB6A);
-        }
-        break;
-      case '0xFFB3E5FC':
-        {
-          setColor = const Color(0xFF42A5F5);
-        }
-        break;
-      default:
-        {
-          setColor = const Color(0xFF42A5F5);
-        }
-        break;
-    }
-    return setColor;
   }
 }
