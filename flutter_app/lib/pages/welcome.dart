@@ -43,12 +43,25 @@ class WelcomeState extends State<Welcome> {
         ),
         body: Container(
           height: MediaQuery.of(context).size.height,
-          color: Colors.yellow[800],
+          color: Colors.yellow[100],
           child: Stack(
             children: <Widget>[
               Image.asset(
                 'assets/images/noon_time.jpg',
                 fit: BoxFit.fitWidth,
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                child: SizedBox(
+                  height: 80,
+                  width: MediaQuery.of(context).size.width,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Colors.yellow[800],
+                    ),
+                  ),
+                ),
               ),
               Positioned(
                 top: 180,
@@ -100,16 +113,19 @@ class WelcomeState extends State<Welcome> {
               ),
               Positioned(
                 left: 0,
-                bottom: 40,
+                bottom: 48,
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 2.5 - 40,
+                  height: MediaQuery.of(context).size.height / 3,
                   width: MediaQuery.of(context).size.width,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      color: Colors.white70,
+                      color: Colors.yellow[100],
                     ),
                     child: Column(
                       children: <Widget>[
+                        SizedBox(
+                          height: 90,
+                        ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                           child: Text(
@@ -138,13 +154,13 @@ class WelcomeState extends State<Welcome> {
               ),
               Positioned(
                 left: 0,
-                bottom: 0,
+                bottom: 8,
                 child: SizedBox(
                   height: 40,
                   width: MediaQuery.of(context).size.width / 2,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      color: Colors.white70,
+                      color: Colors.yellow[100],
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(20),
                         bottomRight: Radius.circular(20),
@@ -164,7 +180,7 @@ class WelcomeState extends State<Welcome> {
               ),
               Positioned(
                 right: 0,
-                bottom: 0,
+                bottom: 8,
                 child: SizedBox(
                   height: 40,
                   width: MediaQuery.of(context).size.width / 2,
