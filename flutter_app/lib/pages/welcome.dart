@@ -71,7 +71,7 @@ class WelcomeState extends State<Welcome> {
                         style: TextStyle(
                           letterSpacing: 4,
                           fontFamily: 'Lato',
-                          fontSize: 42,
+                          fontSize: 38,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         )),
@@ -100,6 +100,42 @@ class WelcomeState extends State<Welcome> {
                     },
                   );
                 },
+              ),
+              SizedBox(
+                height: 14,
+              ),
+              Card(
+                elevation: 3,
+                child: Container(
+                  width: 300,
+                  height: 170,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16,8,16,8),
+                        child: Text('Order History', style: Theme.of(context).textTheme.headline6,),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16,8,16,8),
+                        child: Text('25 May 2020  Aling Nelia', style: Theme.of(context).textTheme.bodyText1,),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16,8,16,8),
+                        child: Text('24 May 2020  Aling Nelia', style: Theme.of(context).textTheme.bodyText1,),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16,8,16,8),
+                        child: Text('22 May 2020  Two Sisters', style: Theme.of(context).textTheme.bodyText1,),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16,8,16,8),
+                        child: Text('20 May 2020  Aling Nelia', style: Theme.of(context).textTheme.bodyText1,),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
