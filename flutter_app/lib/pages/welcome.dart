@@ -43,97 +43,148 @@ class WelcomeState extends State<Welcome> {
         ),
         body: Container(
           height: MediaQuery.of(context).size.height,
-          color: Colors.amber,
-          child: Column(
+          color: Colors.yellow[800],
+          child: Stack(
             children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Image.asset(
-                    'assets/images/noon_time.jpg',
-                    fit: BoxFit.fitWidth,
-                  ),
-                  Positioned(
-                    bottom: 58,
-                    left: 8,
-                    child: Text('Hi Joel,',
-                        style: TextStyle(
-                          letterSpacing: 4,
-                          fontFamily: 'Lato',
-                          fontSize: 42,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        )),
-                  ),
-                  Positioned(
-                    bottom: 8,
-                    left: 24,
-                    child: Text('Lunch for?',
-                        style: TextStyle(
-                          letterSpacing: 4,
-                          fontFamily: 'Lato',
-                          fontSize: 38,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        )),
-                  )
-                ],
+              Image.asset(
+                'assets/images/noon_time.jpg',
+                fit: BoxFit.fitWidth,
               ),
-              SizedBox(height: 16),
-              MaterialSegmentedControl(
-                horizontalPadding: EdgeInsets.fromLTRB(8, 0, 8, 0),
-                children: _children,
-                selectionIndex: _currentSelection,
-                borderColor: Colors.grey,
-                selectedColor: Colors.red,
-                unselectedColor: Colors.white,
-                onSegmentChosen: (index) {
-                  setState(
-                    () {
-                      _currentSelection = index;
-                      print(index);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Feature(),
+              Positioned(
+                top: 180,
+                left: 8,
+                child: Text('Hi Joel,',
+                    style: TextStyle(
+                      letterSpacing: 4,
+                      fontFamily: 'Lato',
+                      fontSize: 42,
+                      color: Colors.white,
+                    )),
+              ),
+              Positioned(
+                top: 230,
+                left: 24,
+                child: Text('Lunch for?',
+                    style: TextStyle(
+                      letterSpacing: 4,
+                      fontFamily: 'Lato',
+                      fontSize: 38,
+                      color: Colors.white,
+                    )),
+              ),
+              Positioned(
+                top: MediaQuery.of(context).size.height / 2.4,
+                left: MediaQuery.of(context).size.width / 7,
+                child: MaterialSegmentedControl(
+                  horizontalPadding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  children: _children,
+                  selectionIndex: _currentSelection,
+                  borderColor: Colors.grey,
+                  selectedColor: Colors.red,
+                  unselectedColor: Colors.white,
+                  onSegmentChosen: (index) {
+                    setState(
+                      () {
+                        _currentSelection = index;
+                        print(index);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Feature(),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+              Positioned(
+                left: 0,
+                bottom: 40,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height / 2.5 - 40,
+                  width: MediaQuery.of(context).size.width,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Colors.white70,
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                          child: Text(
+                            '25 May 2020  Aling Nelia',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
                         ),
-                      );
-                    },
-                  );
-                },
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                          child: Text(
+                            '24 May 2020  Aling Nelia',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                          child: Text(
+                            '22 May 2020  Two Sisters',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-              SizedBox(
-                height: 14,
+              Positioned(
+                left: 0,
+                bottom: 0,
+                child: SizedBox(
+                  height: 40,
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
+                      ),
+                    ),
+                    child: FlatButton(
+                      onPressed: () {
+                        print('Pressed 1');
+                      },
+                      child: Text(
+                        'Order History',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                    ),
+                  ),
+                ),
               ),
-              Card(
-                elevation: 3,
-                child: Container(
-                  width: 300,
-                  height: 170,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16,8,16,8),
-                        child: Text('Order History', style: Theme.of(context).textTheme.headline6,),
+              Positioned(
+                right: 0,
+                bottom: 0,
+                child: SizedBox(
+                  height: 40,
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16,8,16,8),
-                        child: Text('25 May 2020  Aling Nelia', style: Theme.of(context).textTheme.bodyText1,),
+                    ),
+                    child: FlatButton(
+                      onPressed: () {
+                        print('Pressed 2');
+                      },
+                      child: Text(
+                        'Order Status',
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16,8,16,8),
-                        child: Text('24 May 2020  Aling Nelia', style: Theme.of(context).textTheme.bodyText1,),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16,8,16,8),
-                        child: Text('22 May 2020  Two Sisters', style: Theme.of(context).textTheme.bodyText1,),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16,8,16,8),
-                        child: Text('20 May 2020  Aling Nelia', style: Theme.of(context).textTheme.bodyText1,),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
