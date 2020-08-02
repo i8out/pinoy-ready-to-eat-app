@@ -4,3 +4,6 @@ export 'selectstore_state.dart';
 export 'selectmeals_bloc.dart';
 export 'selectmeals_event.dart';
 export 'selectmeals_state.dart';
+export 'welcome_bloc.dart';
+export 'welcome_event.dart';
+export 'welcome_state.dart';
