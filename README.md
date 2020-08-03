@@ -10,7 +10,7 @@ The kitchette owners can load the Day's Menu with prices and the number of onlin
 
 ![](https://github.com/i8out/pinoy-ready-to-eat-app/blob/master/images/Screenshot_welcome.png)
 
-Customers can open the Eateries App only during set ordering time periods for either lunch or dinner. The first page provides readyinformation on the customer's order history and status of current orders.
+Customers can open the Eateries App only during set ordering time periods for either lunch or dinner. The first page provides ready information on the customer's order history and status of current orders.
 
 ![](https://github.com/i8out/pinoy-ready-to-eat-app/blob/master/images/Screenshot_eats.png)
 
