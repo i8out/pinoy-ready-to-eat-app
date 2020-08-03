@@ -1,16 +1,12 @@
-# flutter_app
+# Pinoy Eateries App
 
-A new Flutter pinoy ready to eat application.
+This Flutter Demo App provides small Filipino kitchenettes a digital platform to sell to loyal patrons.
 
-## Getting Started
+## Filipino Kitchenettes
 
-This project is a starting point for a Flutter application.
+The kitchette owners can load the Day's Menu with prices and the number of online orders available.
 
-A few resources to get you started if this is your first Flutter project:
+## Eatery Patrons
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Customers can open the Eateries App only during set ordering time periods for either lunch or dinner. The first page provides information on the customer's order history and status of current orders.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
