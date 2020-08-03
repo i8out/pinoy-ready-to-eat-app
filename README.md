@@ -18,4 +18,4 @@ After selecting customer's location or profile, patrons can select from nearby e
 
 ![](https://github.com/i8out/pinoy-ready-to-eat-app/blob/master/images/Screenshot_menu.png)
 
-Upon selecting the kitchenette, the customer can select viands and forward to pages for ordering drinks and finally check-out and pay. 
+Upon selecting the kitchenette, the customer can select viands and forward to pages for ordering drinks and finally check-out and pay. Methods for social sharing of ratings can be provided. 
