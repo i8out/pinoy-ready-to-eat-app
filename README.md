@@ -14,7 +14,7 @@ Customers can open the Eateries App only during set ordering time periods for ei
 
 ![](https://github.com/i8out/pinoy-ready-to-eat-app/blob/master/images/Screenshot_eats.png)
 
-Customers can select from nearby eateries to order delicious cooked food.
+After selecting customer's location or profile, patrons can select from nearby eateries to order delicious cooked food.
 
 ![](https://github.com/i8out/pinoy-ready-to-eat-app/blob/master/images/Screenshot_menu.png)
 
