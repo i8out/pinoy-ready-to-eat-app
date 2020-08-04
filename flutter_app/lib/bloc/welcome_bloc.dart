@@ -1,3 +1,4 @@
+import 'package:flutter_app/repository/welcome_api.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_app/bloc/bloc.dart';
 
@@ -7,30 +8,31 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
   @override
   WelcomeState get initialState => WelcomeState();
 
-//  final _historyItems = const [
-//    '25 May 2020  Aling Nelia',
-//    '24 May 2020  Aling Nelia',
-//    '22 May 2020  Two Sisters',
-//  ];
-//  final _statusItems = const [
-//    'No pending orders',
-//    '',
-//    '',
-//  ];
   @override
   Stream<WelcomeState> mapEventToState(WelcomeEvent event) async* {
-    if (event is HistoryPressed) {
-      yield ShowHistory(
-        showHistory: true,
-      );
-    } else if (event is StatusPressed) {
-      yield ShowHistory(
-        showHistory: false,
-      );
+    yield DashboardLoading();
+    if (event is StatusPressed) {
+      try {
+        final _items = await GetStatusApi();
+        print(_items);
+        yield ShowTransactions(
+          showHistory: false,
+          items: _items,
+        );
+      } catch (e) {
+        yield DashboardError();
+      }
     } else {
-      yield ShowHistory(
-        showHistory: true,
-      );
+      try {
+        final _items = await GetHistoryApi();
+        print(_items);
+        yield ShowTransactions(
+          showHistory: true,
+          items: _items,
+        );
+      } catch (e) {
+        yield DashboardError();
+      }
     }
   }
 }

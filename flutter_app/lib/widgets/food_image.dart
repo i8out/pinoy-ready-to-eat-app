@@ -23,11 +23,9 @@ class FoodImageState extends State<FoodImage> {
       padding: const EdgeInsets.all(4.0),
       child: GestureDetector(
         onTap: () {
-          print('tapped' + widget._orderQty);
           if (widget._orderQty == '') {
             widget._orderQty = '0';
           }
-          print('tapped 2' + widget._orderQty);
           var _orderMade = int.parse(widget._orderQty);
           _orderMade += 1;
           setState(() {
